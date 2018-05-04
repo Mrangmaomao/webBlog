@@ -1,0 +1,39 @@
+.slideInLeft{
+  -webkit-animation-name: slideInLeft;
+  animation-name: slideInLeft;
+}
+.hoverAn {
+  transition: .5s ease-in-out;
+  -webkit-transition: .5s ease-in-out;
+}
+.row{
+  display: flex;
+
+}
+.row>.clo-5 {
+  width: 48%;
+  margin: 0 1%;
+}
+.row>.clo-7 {
+  width: 68%;
+  margin: 0 1%;
+}
+.row>.clo-3 {
+  width: 28%;
+  margin: 0 1%;
+}
+.row>.clo-4 {
+  width: 38%;
+  margin:0 1% ;
+}
+.row>.clo-6 {
+  width: 58%;
+  margin:0 1% ;
+}
+.flex {
+  display: flex;
+}
+.img-res{ /*图片响应式 */
+  width: 100%;
+  height: auto;
+}
