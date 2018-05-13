@@ -1,7 +1,7 @@
 <style scoped lang="less">
-
   .header-img{
     height: 8.26rem;
+    background: url('../../source/img/sea.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     .navigation{
@@ -14,7 +14,7 @@
     }
   }
   .header-bg{
-    background-color: rgba(0, 0, 0, 0.43);
+    background: rgba(0, 0, 0, 0.43);
     .navigation{
       padding: .2rem .28rem;
     }
@@ -94,18 +94,9 @@
       color: #999;
     }
   }
-  .header-static{
-    background-size:cover;
-    background-repeat: no-repeat;
-    height: 8.26rem;
-    .navigation{
-      background: rgba(0, 0, 0, 0.43);
-      padding: .34rem .28rem;
-    }
-  }
 </style>
 <template>
-  <div class="header" :class="{'header-img':headerType,'header-bg':!headerType,'header-static': !headerType && bgImg}" v-bind:style="{backgroundImage:`url('${bgImg}')`}">
+  <div class="header" :class="{'header-img':headerType,'header-bg':!headerType}">
     <div class="container">
       <div class="navigation">
         <div class="navigation-left animated wow slideInLeft animated" data-wow-delay="700ms">
@@ -128,16 +119,12 @@
         <h2>陌生人</h2>
         <p>欢迎来到我的网站</p>
       </div>
-      <div class="static-html" v-if="!headerType && bgImg">
-        <slot></slot>
-      </div>
     </div>
 
   </div>
 </template>
 <script>
-
-const headerData = [
+  const headerData = [
     {
       index: 0,
       name: '首页',
@@ -156,8 +143,8 @@ const headerData = [
       name: '摄影展示',
       url: '/photography'
     }
-];
-export default {
+  ];
+  export default {
     name: 'Header',
     props: {
       active: '',
@@ -165,26 +152,15 @@ export default {
         default: true,
         type: Boolean
       },
-      bgImg:{
-        default: ''
-      }
     },
-    mounted(){
-      let index = 0;
+    created(){
       for( let i = 0; i< this.headerData.length; i++ ){
         let item = this.headerData[i];
         if( this.active == item.url ) {
-          index = i;
           item.active = true
         } else {
           item.active = false;
         }
-      }
-      this.$set(this.headerData,index,this.headerData[index]);
-    },
-    beforeDestroy(){
-      for( let i = 0; i< this.headerData.length; i++ ){
-          this.headerData[i].active = false;
       }
     },
     data(){

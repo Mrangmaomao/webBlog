@@ -130,7 +130,7 @@
 </style>
 <template>
   <div class="index">
-      <Header active="/"></Header>
+      <Header active="/" :bgImg='defaultBg'></Header>
       <div class="container">
         <div class="row">
           <div class="clo-4">
@@ -180,7 +180,7 @@
   import img1 from '../source/img/1.jpg'
   import img2 from '../source/img/2.jpg'
   import img3 from '../source/img/3.jpg'
-  import {headerData} from '../source/js/data';
+  import defaultBg from '../source/img/sea.jpg';
   var pages = [
     {
       title: 'hello',
@@ -229,9 +229,9 @@
     name: 'HelloWorld',
     data () {
       return {
-        headerData,
         pages:pages,
         myDatas,
+        defaultBg,
         sliderinit: {
           currentPage: 0,//当前页码
           thresholdDistance: 500,//滑动判定距离
