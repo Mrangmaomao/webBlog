@@ -6,9 +6,8 @@ const Login = r => require.ensure([], () => r(require('../components/index.vue')
 const My = r => require.ensure([], () => r(require('../components/my.vue')), 'My')
 const Blog = r => require.ensure([], () => r(require('../components/blog.vue')), 'Blog')
 const Photography = r => require.ensure([], () => r(require('../components/photography.vue')), 'Photography')
-
+const Play = r => require.ensure([], () => r(require('../components/play.vue')), 'Play')
 Vue.use(Router)
-
 const router = new Router({
   routes: [
     {
@@ -26,10 +25,17 @@ const router = new Router({
       name: 'blog',
       component: Blog,
       meta: { keepAlive: false }
-    },    {
+    },    
+    {
       path: '/photography',
       name: 'photography',
       component: Photography,
+      meta: { keepAlive: false }
+    },
+    {
+      path: '/play',
+      name: 'play',
+      component: Play,
       meta: { keepAlive: false }
     },
 

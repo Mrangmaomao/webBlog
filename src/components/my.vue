@@ -49,15 +49,17 @@
     .text-content{
       margin-top: .2rem;
     }
+
     .row{
       border-top:1px dotted #44C29E;
       border-bottom:1px dotted #44C29E;
-      height: 2rem;
+      height: 2.6rem;
       .left{
             padding-right: .6rem;
         width: 50%;
         .panel{
           margin-right: .2rem;
+          
           margin-top:.4rem;
         }
       }
@@ -75,7 +77,7 @@
           box-shadow: 0 0 0.06rem rgba(0,0,0,.2); 
           border-radius: .8rem;
           left: -.4rem;
-          top: .6rem;
+          top: .9rem;
           .acr-acr{
             width: .6rem;
             height: .6rem;
@@ -100,6 +102,13 @@
       .right{
         margin-left: .8rem;
         margin-top: .4rem;
+        width: 48%;
+      }
+    }
+    .row:nth-child(3){
+      height: 2rem;
+      .acr{
+        top: .6rem;
       }
     }
   }
@@ -107,6 +116,18 @@
     background-color: #fff;
     padding: .2rem;
     border-radius: .08rem;
+    p,h3{
+      margin-top: .1rem;
+      letter-spacing: .02rem;
+      font-family: MicrosoftYaHei;
+    }
+    p.text{
+      text-indent: .2rem;
+    }
+    p{
+      color: #999;
+      font-size: .1rem;
+    }
   }
 </style>
 <template>
@@ -140,12 +161,13 @@
                     <span>2017.9 - 至今</span>
                   </p>
                   <h3>前端小组长 ／ 前端工程师 </h3>
+                  <p>技术栈:webpack + vue + vue-router + iview + es6 + less</p>
                 </div>
               </div>
               <div class="content">
                 <div class="acr">
                   <div class="acr-acr">
-                    <p>6月</p>
+                    <p>至今</p>
                     <p>2017</p>
                   </div>
                 </div>
@@ -168,8 +190,81 @@
                 </div>
               </div>
             </div>
+            <div class="row flex">
+              <div class="left">
+                <div class="panel">
+                  <p>
+                    <span>成都上品软件</span>
+                    <span>2016.6 - 2017.9</span>
+                  </p>
+                  <h3>前端工程师 </h3>
+                  <p>技术栈:es5 + knockout.js + coffee + jquery + ztree + require + bootstarp + less</p>
+                </div>
+              </div>
+              <div class="content">
+                <div class="acr">
+                  <div class="acr-acr">
+                    <p>2016</p>
+                    <p>2017</p>
+                  </div>
+                </div>
+              </div>
+              <div class="right">
+                <div class="panel">
+                  <h3>工作职责</h3>
+                  <div>
+                    <p>
+                      1.  对页面的兼容性调整，页面优化，静态页面，页面交互，用户体验度。
+                    </p>
+                    <p>
+                      2.  利用公司现用技术对现有的OA系统进行维护（包括pc端，手机端 ，对页面的整洁性，性能，样式，兼容性，前端功能 ）以及新功能的添加，配合UI实现高效的页面重现，后端数据到前台的可视化。
+                    </p>
+                    <p>
+                    3. 封装公共组件
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+              <div class="row flex">
+              <div class="left">
+                <div class="panel">
+                  <p>
+                    <span>四川星酷物联网科技有限公司</span>
+                    <span>2015.1 - 2016.5</span>
+                  </p>
+                  <h3> SEO / 前端工程师 </h3>
+                  <p>html + css + js + jquery </p>
+                </div>
+              </div>
+              <div class="content">
+                <div class="acr">
+                  <div class="acr-acr">
+                    <p>2015</p>
+                    <p>2016</p>
+                  </div>
+                </div>
+              </div>
+              <div class="right">
+                <div class="panel">
+                  <h3>工作职责</h3>
+                  <div>
+                    <p class='text'>
+                      负责网站的日常优化以及公司官方微信的维护，以及利用photoshop进行推广图片制作，后期主要以前端工作为主要，包括 pc端页面的编写，ajax数据的交互以及展现，其中公司的产品是一个电商网站。星酷商城。
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="container">
+        <h2>项目经验</h2>
       </div>
     </div>
 

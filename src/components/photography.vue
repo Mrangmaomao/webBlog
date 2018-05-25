@@ -10,8 +10,6 @@
 
 <script>
   import md5 from 'js-md5'
-  import {headerData} from '../source/js/data';
-  console.log(headerData,55555555555);
   export default {
     name: 'HelloWorld',
     data () {

@@ -155,7 +155,12 @@ const headerData = [
       index: 1,
       name: '摄影展示',
       url: '/photography'
-    }
+    },
+      {
+      index: 0,
+      name: '小游戏',
+      url:'/play'
+    },
 ];
 export default {
     name: 'Header',
