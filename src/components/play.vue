@@ -102,12 +102,22 @@
      .close:hover{
        cursor:pointer;
      }
+
    }
+   .index{
+     position:relative;
+   }
+  .color-picker {
+    position: absolute;
+       
+  }
 </style>
 <template>
   <div class="index">
     <Header  active="/play" :headerType="false"></Header>
-    
+    <div v-if='openColor' :style="{top:colorTop + 'px',left: colorLeft + 'px'}" class="color-picker">
+      <colorPicker @on-close='closePanel' :defaultOpen="true"  v-model="modelColor" v-on:change="headleChangeColor"></colorPicker> 
+    </div>
     <div class='content' :style="{width:screenWidth + 'px',height:screenHeight+'px'}">
       <div class='title'>
         <span @click="toggleDec">游戏玩法</span>
@@ -120,7 +130,7 @@
         <input v-model='gridNum' /><span @click="run">runing</span>
       </div>
       <div class="border-content" v-if='borderData.length'>
-        <div v-for="item in borderData" :style="{backgroundColor:item.backgroundColor}" @click="itemClick(item)" @dblclick="itemDBClick(item)"></div>
+        <div v-for="item in borderData" :style="{backgroundColor:item.backgroundColor}" @click="itemClick(item,$event)" @dblclick="itemDBClick(item,$event)"></div>
         <div class=""></div>
       </div>
     </div>
@@ -141,13 +151,19 @@
 
 <script>
   export default {
-    name: 'HelloWorld',
     data () {
       return {
         screenHeight: 0,
         screenWidth: 0,
+        girdWidth: 20,
+        gridHeight: 20,
         borderData:[],
         gridNum: 1000,
+        modelColor: '#333',
+        openColor: false,
+        clickItem: null,
+        colorTop: 0,
+        colorLeft: 0,
         isDec: false
       }
     },
@@ -164,13 +180,25 @@
     },
     methods: {
       toggleOperation: function(){
-        span-active
+        //span-active
       },
       toggleDec:function(){
         this.isDec = this.isDec ? false : true;
       },
-      itemClick:function (item) {
+      closePanel: function(val){
+        if (!val) {
+          this.openColor = false;
+        }
+      },
+      itemClick:function (item, e) {
         let index = item.index;
+        this.clickItem = item;
+        if(this.borderData[index].backgroundColor != '#000') {
+          this.colorTop = e.screenY - this.gridHeight;
+          this.colorLeft = e.screenX - this.girdWidth * 2;
+          this.openColor = true;
+          return false;
+        }
         this.borderData[index].backgroundColor = '#999';
         this.$set(this.borderData, index, this.borderData[index]);
       },
@@ -187,8 +215,9 @@
         })
           
       },
-      itemDBClick:function(item){
-         let index = item.index;
+      itemDBClick:function(item,e){
+        e.stopPropagation();
+        let index = item.index;
         this.borderData[index].backgroundColor = '#000';
         this.$set(this.borderData, index, this.borderData[index]);
       },
@@ -209,6 +238,12 @@
           })
         }
         _this.calHeight();
+      },
+      headleChangeColor: function(color){ //颜色改变的时候
+        let index = this.clickItem.index;
+        this.borderData[index].backgroundColor = color;
+        this.$set(this.borderData, index, this.borderData[index]);
+        console.log( color,4444 );
       }
 
     }

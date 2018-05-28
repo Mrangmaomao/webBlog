@@ -24,6 +24,7 @@
     "mint-ui": "^2.2.13",
     "style-loader": "^0.20.3",
     "vue": "^2.5.2",
+    "vue-color-picker": "^0.6.1",
     "vue-concise-slider": "^2.4.8",
     "vue-cropper": "^0.2.9",
     "vue-router": "^3.0.1",

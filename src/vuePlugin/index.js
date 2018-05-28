@@ -1,7 +1,8 @@
 import Header from './header/index.vue';
-import slider from 'vue-concise-slider'
+import slider from 'vue-concise-slider';
+import colorPicker from './colorPicker/index.vue';
 const components = {
-  Header,slider
+  Header,slider,colorPicker
 }
 const install = function (Vue, opts = {}) {
     Object.keys(components).forEach((key) => {
