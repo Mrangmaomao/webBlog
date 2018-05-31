@@ -1,7 +1,7 @@
 <style scoped lang="less">
   .my-skill{
     
-    padding: .6rem;
+    padding: 1rem .6rem;
     .text-content{
         margin:0 auto;
       width:60%;
@@ -42,7 +42,7 @@
   }
   .experience {
     background-color:#e4e4e4;
-    padding: .6rem;
+    padding: 1rem .6rem;
     h2{
       text-align: center;
     }
@@ -127,6 +127,154 @@
     p{
       color: #999;
       font-size: .1rem;
+    }
+  }
+@keyframes autoMove {
+      from { }
+      to {
+        transform: rotateY(-360deg);
+      }
+  }
+  .project{
+    margin: 1rem 0; 
+    perspective: 100rem;
+    height: 4rem;
+    h2{
+      text-align: center;
+    }
+    .project-content:hover{
+      /*鼠标移入 暂停动画*/
+      animation-play-state: paused;
+    }
+    .project-content{
+      display: flex;
+      transform-style: preserve-3d;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      width: 3rem;
+      margin: 0 auto;
+      position: relative;
+      animation: autoMove 20s infinite linear;
+      .group:hover{
+        cursor: pointer;
+      }
+      .group{
+        // float: left;
+        text-align: center;
+        padding: .1rem;
+        width: 2rem;
+        border: 1px solid #ddd;
+        height: 2rem;
+        background-color: #efefef;
+        position: absolute;
+        margin-top: 1rem;
+        // transform: rotateX(60deg);
+        // translate3d:rotateX
+      }
+      
+    
+      // .group:nth-child(3){
+      //   transform:translateX(-10rem);
+      //   // transform: rotateX(180deg) rotateY(180deg) rotateZ(90deg);
+      // }
+      //   .group:nth-child(2){
+      //   transform:translateX(-7rem); 
+      //   // transform: translate(30deg) rotateY(120deg);
+      // }
+      // .group:nth-child(1){
+      //   // transform: translateX(30px);
+      //   margin: 0 auto;
+      // }
+    }
+  }
+  @keyframes projectAn {
+      from { 
+        transform: rotateY(90deg);
+      }
+      to {
+        transform: rotateY(0deg);
+      }
+  }
+  .project-model {
+    color: #fff;
+    overflow: hidden;
+        position: fixed;
+    background-color: rgba(0,0,0,.5);
+    width: 50%;
+    height: 4rem;
+    top:20%;
+    border: 1px solid #44C29E;
+    border-radius: .1rem;
+    left: 25%;
+    animation: projectAn .2s linear;
+    h4{
+      text-align: center;
+      font-size: .2rem;
+      margin: .2rem 0rem;
+    }
+    div,h4{
+      margin: .2rem .2rem;
+    }
+    div{
+      text-indent: .2rem;
+    }
+     .close{
+       position: absolute;
+       top:-.02rem;
+      //  background-color: #7dd5bc;
+      
+       color: #7dd5bc;
+       right: 0rem;
+       font-size: .6rem;
+       top:-.22rem;
+      margin-top: .2rem;
+     }
+     .close:hover{
+       cursor: pointer;
+     }
+  }
+  .self{
+     background-color: #efefef;
+  }
+
+  .self,.thanks{
+    margin-top: .6rem;
+    padding: 1rem 0;
+    // background-image: url('../source/img/self.jpeg');
+    // background-size: contain;
+    width: 100%;
+    // background-repeat: no-repeat;
+   
+    font-size: .2rem;
+    color: #333;
+    h2{
+      display: block;
+      text-align: center;
+          width: 100%;
+          margin-bottom: .2rem;
+         
+          // margin: 0 align-self: auto;
+    }
+    p{
+      font-size: .16rem;
+      color: #20624f;
+      text-indent: .32rem;
+    }
+  }
+  .thanks{
+    overflow: hidden;
+    padding:.1rem 0;
+    // color: #fff;  
+    h2{
+      color: #44C29E;
+      padding: .1rem 0;
+    }
+    span{
+      vertical-align: .8rem;
+    }
+    .kit{
+       width: 1.6rem;
+        height: auto;
     }
   }
 </style>
@@ -262,25 +410,109 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row project">
       <div class="container">
         <h2>项目经验</h2>
+        <div class="project-content">
+          <div @click="projectClick(item)" class="group" v-for="(item,index) in projectData" :key='index' :style="{transform:`rotateY(${item.rotateY}deg) translateZ(4.2rem)`}">
+            <p class="title">
+              {{item.title}}
+            </p>
+            <p class="text">
+              {{item.dec}}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
+    <div class="self">
+      <h2>自我评价</h2>
+      <div  class="container">
+              <p>个人觉得自己还是很励志的，为了自己的理想可以勇敢往前追。个人特点就是比较自信，
+对事物有着好奇感。从有到无，全凭自己的努力。在工作中可以承担压力，对新事物有着较
+强的学习能力，可以独立完成一个项目。</p>
+      </div>
 
+    </div>
+    <div class="thanks">
+      <h2><span>  谢谢观看!</span><img class="kit" src="../source/img/kit.jpg" alt=""></h2>
+    </div>
+    <Footer></Footer>
+    <div class="project-model" v-if='isProjectModel'>
+      <span class="iconfont icon-guanbi1 close" @click="toggleModel" ></span>  
+      <h4>{{projectItem.title}}</h4>
+      <div>
+        {{projectItem.dec}}
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-  import bgImg  from '../source/img/my.jpg'
+  import bgImg  from '../source/img/my.jpg';
+  const projectData = [
+    {
+      title:'天露物流 CMS 系统',
+      dec:'该项目用于 仓库的出入库的库存管理，以及费用管理，项目采用前后端分离开发的方式，前端使用 vue + es6 + webpack + iview, 中间件使用 nginx',
+      rotateY: 0,
+    },
+        {
+      title:'h5项目',
+      dec:'项目简介',
+      rotateY: 0,
+    },
+        {
+      title:'h5项目',
+      dec:'项目简介',
+      rotateY: 0,
+    },
+       {
+      title:'h5项目',
+      dec:'项目简介',
+      rotateY: 0,
+    },
+       {
+      title:'h5项目',
+      dec:'项目简介',
+      rotateY: 0,
+    },
+       {
+      title:'h5项目',
+      dec:'项目简介',
+      rotateY: 0,
+    },
+       {
+      title:'h5项目',
+      dec:'项目简介',
+      rotateY: 0,
+    },
+  ]
   export default {
-    name: 'HelloWorld',
     data () {
       return {
-        bgImg
+        projectData,
+        bgImg,
+        isProjectModel: false,
+        projectItem: {},
       }
     },
+    mounted(){
+      let itemDeg = 360 / projectData.length;
+      projectData.forEach( (item,index) => {
+        item.rotateY = index * itemDeg;
+      })
+      this.$nextTick( () => {
+
+      })
+    },
     methods: {
+      toggleModel: function(){
+        this.isProjectModel = false;
+      },
+      projectClick:function(item){
+        this.isProjectModel = true;
+        this.projectItem = item;
+      }
     }
   }
 </script>

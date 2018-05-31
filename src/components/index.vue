@@ -127,6 +127,7 @@
     padding: .6rem;
     margin-top: .6rem;
   }
+
 </style>
 <template>
   <div class="index">
@@ -160,7 +161,7 @@
           </div>
         </div>
       </div>
-    <div class="two">
+    <!-- <div class="two">
       <div class="container">
         <div class="row">
           <div class="clo-4">
@@ -170,7 +171,8 @@
 
           </div>
         </div>
-      </div>
+      </div> -->
+      <Footer></Footer>
     </div>
   </div>
 </template>
